@@ -5,6 +5,7 @@
   |============================
 */
 /* Common styles */
+@import 'modern-normalize/modern-normalize.css';
 @import url('./reset.css');
 @import url('./base.css');
 @import url('./container.css');
@@ -17,3 +18,4 @@
 @import url('./back-link.css');
 @import url('./footer.css');
 @import url('./gallery.css');
+@import url('./form.css');

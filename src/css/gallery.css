@@ -40,7 +40,7 @@
   color: #fff !important;
 }
 
-.simple-lightbox .sl-image img {
+.sl-image img {
   width: 1112px !important;
   height: 640px !important;
   object-fit: cover !important;
@@ -53,10 +53,17 @@
 }
 .sl-image {
   top: 54px !important;
-  left: 295px !important;
+  /* left: 50% !important;
+  transform: translateX(-50%); */
+  margin-left: -15px;
   width: 1112px !important;
   height: 640px !important;
 }
 .sl-caption {
   width: 1112px !important;
+}
+.simple-lightbox .sl-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
