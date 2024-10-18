@@ -33,13 +33,14 @@ function submitBtn(event) {
   const submitForm = event.target;
   const email = submitForm.elements.email.value.trim();
   const message = submitForm.elements.message.value.trim();
-  if (email === '') {
+  if (email === '' || message === '') {
     return alert('Email field must be filled in');
   }
   const userData = {
     email,
     message,
   };
+  console.log(userData);
   localStorage.removeItem(localStorageEmail);
   localStorage.removeItem(localStorageText);
   form.reset();
