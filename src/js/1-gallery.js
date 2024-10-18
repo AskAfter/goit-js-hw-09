@@ -79,7 +79,7 @@ const imagesPreview = images
 gallery.insertAdjacentHTML('beforeend', imagesPreview);
 
 let lightbox = new SimpleLightbox('.gallery a', {
-  captions: false,
+  //   captions: false,
   captionsData: 'alt',
   captionDelay: 250,
 });

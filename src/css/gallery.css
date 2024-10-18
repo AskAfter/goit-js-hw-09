@@ -53,7 +53,10 @@
 }
 .sl-image {
   top: 54px !important;
-  left: 154px !important;
+  left: 295px !important;
   width: 1112px !important;
   height: 640px !important;
+}
+.sl-caption {
+  width: 1112px !important;
 }
