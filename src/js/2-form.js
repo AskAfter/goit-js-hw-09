@@ -7,7 +7,7 @@ const localStorageKey = 'feedback-form-state';
 
 const savedData = JSON.parse(localStorage.getItem(localStorageKey)) || {};
 input.value = savedData.email || '';
-textInput.value = savedData.textInput || '';
+textInput.value = savedData.message || '';
 
 input.addEventListener('focus', () => {
   input.placeholder = 'Type area';
@@ -16,13 +16,16 @@ input.addEventListener('blur', () => {
   input.placeholder = '';
 });
 
-input.addEventListener('input', () => {
+function saveForm() {
   const formData = {
     email: input.value,
     message: textInput.value,
   };
   localStorage.setItem(localStorageKey, JSON.stringify(formData));
-});
+}
+
+input.addEventListener('input', saveForm);
+textInput.addEventListener('input', saveForm);
 
 form.addEventListener('submit', submitBtn);
 
