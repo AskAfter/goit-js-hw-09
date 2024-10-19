@@ -3,11 +3,11 @@ const input = document.querySelector('input');
 const btn = document.querySelector('button');
 const textInput = document.querySelector('textarea');
 
-const localStorageText = 'user-message';
-const localStorageEmail = 'user-email';
+const localStorageKey = 'feedback-form-state';
 
-const inputEmail = form.elements.email;
-const textArea = form.elements.message;
+const savedData = JSON.parse(localStorage.getItem(localStorageKey)) || {};
+input.value = savedData.email || '';
+textInput.value = savedData.textInput || '';
 
 input.addEventListener('focus', () => {
   input.placeholder = 'Type area';
@@ -16,32 +16,30 @@ input.addEventListener('blur', () => {
   input.placeholder = '';
 });
 
+input.addEventListener('input', () => {
+  const formData = {
+    email: input.value,
+    message: textInput.value,
+  };
+  localStorage.setItem(localStorageKey, JSON.stringify(formData));
+});
+
 form.addEventListener('submit', submitBtn);
-
-input.addEventListener('input', event => {
-  localStorage.setItem(localStorageEmail, event.target.value);
-});
-
-textInput.addEventListener('input', event => {
-  localStorage.setItem(localStorageText, event.target.value);
-});
-textArea.value = localStorage.getItem(localStorageText) ?? '';
-inputEmail.value = localStorage.getItem(localStorageEmail) ?? '';
 
 function submitBtn(event) {
   event.preventDefault();
-  const submitForm = event.target;
-  const email = submitForm.elements.email.value.trim();
-  const message = submitForm.elements.message.value.trim();
+  const email = input.value.trim();
+  const message = textInput.value.trim();
   if (email === '' || message === '') {
     return alert('Email field must be filled in');
   }
+
   const userData = {
     email,
     message,
   };
+
   console.log(userData);
-  localStorage.removeItem(localStorageEmail);
-  localStorage.removeItem(localStorageText);
+  localStorage.removeItem(localStorageKey);
   form.reset();
 }
